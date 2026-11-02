@@ -1,0 +1,374 @@
+.dishes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.dish {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 40px;
+  border: 2px solid transparent;
+  border-radius: 35px;
+  cursor: pointer;
+  filter: drop-shadow(17px 19px 24px rgba(0, 0, 0, 0.13));
+  background-color: white;
+}
+
+.dish:hover,
+.dish.selected {
+  border: 2px solid tomato;
+}
+
+.dish:hover .add-btn {
+  background-color: #d0d0d0;
+}
+
+.dish img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 35px;
+}
+
+.price,
+.name {
+  font-size: 24px;
+}
+
+.price {
+  margin-top: 16px;
+}
+
+.name {
+  flex-grow: 1;
+}
+
+.weight {
+  color: gray;
+  font-size: 16px;
+}
+
+.add-btn {
+  margin-top: 16px;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 10px;
+  background-color: #f1eee9;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 0 0 16px;
+}
+
+.filters button {
+  padding: 4px 0;
+  border: 0;
+  color: #555;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.filters button:hover,
+.filters button.active {
+  color: tomato;
+}
+
+.combo-section {
+  padding: 0 100px 40px;
+}
+
+.combo-section > h2 {
+  text-align: center;
+}
+
+.combos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.combo-card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: white;
+
+}
+
+.combo-items {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.combo-items > div {
+  flex: 1;
+  text-align: center;
+}
+
+.combo-items img {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+.combo-items img:hover {
+  transform: translateY(-5px) scale(1.1);
+}
+
+.combo-items p,
+.combo-caption {
+  font-size: 16px;
+  text-align: center;
+}
+
+.combo-caption {
+  flex-grow: 1;
+  margin-top: 14px;
+  font-size: 18px;
+}
+
+.dessert-note {
+  margin-top: 6px;
+  color: #555;
+  font-size: 16px;
+  text-align: center;
+}
+
+.checkout-panel {
+  position: sticky;
+  z-index: 4;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 30px;
+  border-top: 1px solid #bbb;
+  background: white;
+}
+
+.checkout-panel a {
+  padding: 12px 22px;
+  border-radius: 10px;
+  color: white;
+  background: tomato;
+  font-size: 18px;
+}
+
+.checkout-panel a.disabled {
+  color: #555;
+  background: #e5e5e5;
+  pointer-events: none;
+}
+
+.load-error {
+  padding: 20px;
+  color: #555;
+  text-align: center;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.notice-overlay {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.notice {
+  width: 420px;
+  max-width: 100%;
+  padding: 30px;
+  border-radius: 12px;
+  background: white;
+  text-align: center;
+}
+
+.notice p {
+  margin-bottom: 20px;
+}
+
+.notice button {
+  padding: 10px 30px;
+  border: 0;
+  border-radius: 8px;
+  color: #000;
+  background: #f1eee9;
+  font: inherit;
+  cursor: pointer;
+}
+
+.notice button:hover {
+  color: white;
+  background: tomato;
+}
+
+.order-section {
+  padding: 0 100px 50px;
+}
+
+.order-section > h2 {
+  text-align: center;
+}
+
+.form-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.checkout-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.order-section-page {
+  padding-bottom: 40px;
+}
+
+.remove-btn {
+  margin-top: 16px;
+  padding: 10px 30px;
+  border: 0;
+  border-radius: 10px;
+  background: #f1eee9;
+  font: inherit;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background: #d0d0d0;
+}
+
+.order-form h3 {
+  margin: 0 0 20px;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.order-form label,
+.order-form legend {
+  display: block;
+  margin: 12px 0 6px;
+}
+
+.order-form select,
+.order-form input,
+.order-form textarea {
+  width: 100%;
+  min-height: 38px;
+  padding: 8px;
+  border: 1px solid #888;
+  font: inherit;
+}
+
+.order-form input[type="checkbox"],
+.order-form input[type="radio"] {
+  width: auto;
+  min-height: auto;
+  padding: 0;
+  border: 0;
+}
+
+.order-form fieldset {
+  margin: 16px 0;
+  padding: 0;
+  border: 0;
+}
+
+.order-form .check-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.order-form .check-row label {
+  margin: 5px 0;
+}
+
+.form-note {
+  color: #555;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.form-buttons button {
+  padding: 8px 24px;
+  font: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .dishes { grid-template-columns: 1fr 1fr; }
+  nav { justify-content: space-between; }
+}
+
+@media (max-width: 600px) {
+  h1,
+  section > h2 { text-align: center; }
+  nav { flex-direction: column; align-items: center; }
+  nav a { font-size: 26px; }
+  .dishes { grid-template-columns: 1fr; }
+
+  .order-section {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .form-columns {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .checkout-columns {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .combo-section {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .combos {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-panel {
+    flex-direction: column;
+    padding: 16px 20px;
+    text-align: center;
+  }
+}
+
+

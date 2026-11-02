@@ -1,0 +1,80 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  color: #000;
+  background: #fff;
+}
+
+a {
+  color: #000;
+}
+
+a:hover {
+  color: tomato;
+}
+
+.landing-header {
+  padding: 24px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.landing-header a {
+  color: #000;
+  font-size: 16px;
+}
+
+.landing-header a:hover,
+.landing-header a.active {
+  color: tomato;
+}
+
+.landing-header .brand {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.btn-tomato {
+  border-color: tomato;
+  color: white;
+  background: tomato;
+}
+
+.btn-tomato:hover {
+  border-color: tomato;
+  color: white;
+  background: tomato;
+  opacity: 0.9;
+}
+
+.form-control:focus {
+  border-color: tomato;
+  box-shadow: none;
+}
+
+.cta-section {
+  background: #f1eee9;
+}
+
+.landing-footer {
+  color: white;
+  background: #000;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+}
