@@ -201,7 +201,9 @@
 
   async function handleApiRequest(url, init = {}, originalInput) {
     const method = (init.method || (originalInput instanceof Request && originalInput.method) || "GET").toUpperCase();
-    const path = url.pathname.slice(apiPrefix.length) || "/";
+    const path = url.pathname.startsWith(apiPrefix)
+      ? url.pathname.slice(apiPrefix.length) || "/"
+      : url.pathname;
 
     if (path === "/dishes" && method === "GET") return jsonResponse(await loadLocalDishes());
     const dishMatch = path.match(/^\/dishes\/(\d+)$/);
@@ -215,8 +217,13 @@
     }
     if (path.startsWith("/images/")) {
       const key = path.slice("/images/".length).split("/").pop().replace(/\.[^.]+$/, "");
+      const normalizedKey = key.toLowerCase().replace(/[^a-z0-9]/g, "");
       const dishes = await loadLocalDishes();
-      const dish = dishes.find((item) => item.keyword === key);
+      const dish = dishes.find((item) => {
+        const imageName = item.image.split("/").pop().replace(/\.[^.]+$/, "");
+        return item.keyword.toLowerCase().replace(/[^a-z0-9]/g, "") === normalizedKey
+          || imageName.toLowerCase().replace(/[^a-z0-9]/g, "") === normalizedKey;
+      });
       if (!dish?.image) return errorResponse("Изображение не найдено.", 404);
       return nativeFetch(new URL(dish.image, window.location.href));
     }
@@ -274,7 +281,9 @@
   window.fetch = async function (input, init) {
     const requestUrl = input instanceof Request ? input.url : input;
     const url = new URL(requestUrl, window.location.href);
-    if (url.origin !== apiOrigin || !url.pathname.startsWith(apiPrefix)) {
+    const apiRequest = url.pathname === apiPrefix || url.pathname.startsWith(`${apiPrefix}/`);
+    const rootEndpoint = url.pathname === "/health" || url.pathname.startsWith("/images/");
+    if (url.origin !== apiOrigin || (!apiRequest && !rootEndpoint)) {
       return nativeFetch(input, init);
     }
     try {
