@@ -1,11 +1,21 @@
 let dishes = [];
 const dishesUrl = "https://edu.std-900.ist.mospolytech.ru/labs/api/dishes";
 const apiOrigin = new URL(dishesUrl).origin;
+const fallbackDishesUrl = "./dishes.json";
 
 async function loadDishes() {
-  const response = await fetch(dishesUrl);
-  if (!response.ok) throw new Error("Не удалось загрузить меню с сервера.");
-  const result = await response.json();
+  let result;
+  try {
+    const response = await fetch(dishesUrl);
+    if (!response.ok) throw new Error("Не удалось загрузить меню с сервера.");
+    result = await response.json();
+    if (!Array.isArray(result)) throw new Error("Сервер вернул неверный формат меню.");
+  } catch {
+    const response = await fetch(fallbackDishesUrl);
+    if (!response.ok) throw new Error("Не удалось загрузить локальное меню.");
+    result = await response.json();
+    if (!Array.isArray(result)) throw new Error("Локальный файл меню имеет неверный формат.");
+  }
 
   return result.map((dish) => {
     let category = dish.category;
