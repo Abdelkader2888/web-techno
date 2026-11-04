@@ -6,7 +6,8 @@
     "category": "soup",
     "kind": "veg",
     "count": "350 г",
-    "image": "img/gazpacho.jpg"
+    "image": "img/gazpacho.jpg",
+    "id": 1
   },
   {
     "keyword": "mushroom_soup",
@@ -15,7 +16,8 @@
     "category": "soup",
     "kind": "veg",
     "count": "330 г",
-    "image": "img/mushroom-soup.jpg"
+    "image": "img/mushroom-soup.jpg",
+    "id": 2
   },
   {
     "keyword": "norwegian_soup",
@@ -24,7 +26,8 @@
     "category": "soup",
     "kind": "fish",
     "count": "330 г",
-    "image": "img/norwegian-soup.jpg"
+    "image": "img/norwegian-soup.jpg",
+    "id": 3
   },
   {
     "keyword": "ramen",
@@ -33,7 +36,8 @@
     "category": "soup",
     "kind": "meat",
     "count": "425 г",
-    "image": "img/ramen.jpg"
+    "image": "img/ramen.jpg",
+    "id": 4
   },
   {
     "keyword": "tom_yum",
@@ -42,7 +46,8 @@
     "category": "soup",
     "kind": "fish",
     "count": "500 г",
-    "image": "img/tom-yum.jpg"
+    "image": "img/tom-yum.jpg",
+    "id": 5
   },
   {
     "keyword": "chicken_soup",
@@ -51,7 +56,8 @@
     "category": "soup",
     "kind": "meat",
     "count": "350 г",
-    "image": "img/chicken-soup.jpg"
+    "image": "img/chicken-soup.jpg",
+    "id": 6
   },
   {
     "keyword": "fried_potatoes",
@@ -60,7 +66,8 @@
     "category": "main_course",
     "kind": "veg",
     "count": "250 г",
-    "image": "img/potatoes.jpg"
+    "image": "img/potatoes.jpg",
+    "id": 7
   },
   {
     "keyword": "lasagna",
@@ -69,7 +76,8 @@
     "category": "main_course",
     "kind": "meat",
     "count": "310 г",
-    "image": "img/lasagna.jpg"
+    "image": "img/lasagna.jpg",
+    "id": 8
   },
   {
     "keyword": "chicken_cutlets",
@@ -78,7 +86,8 @@
     "category": "main_course",
     "kind": "meat",
     "count": "280 г",
-    "image": "img/chicken.jpg"
+    "image": "img/chicken.jpg",
+    "id": 9
   },
   {
     "keyword": "fish_cutlet",
@@ -87,7 +96,8 @@
     "category": "main_course",
     "kind": "fish",
     "count": "270 г",
-    "image": "img/fish-rice.jpg"
+    "image": "img/fish-rice.jpg",
+    "id": 10
   },
   {
     "keyword": "pizza_margherita",
@@ -96,7 +106,8 @@
     "category": "main_course",
     "kind": "veg",
     "count": "470 г",
-    "image": "img/pizza.jpg"
+    "image": "img/pizza.jpg",
+    "id": 11
   },
   {
     "keyword": "shrimp_pasta",
@@ -105,7 +116,8 @@
     "category": "main_course",
     "kind": "fish",
     "count": "280 г",
-    "image": "img/shrimp-pasta.jpg"
+    "image": "img/shrimp-pasta.jpg",
+    "id": 12
   },
   {
     "keyword": "korean_salad",
@@ -114,7 +126,8 @@
     "category": "salad",
     "kind": "veg",
     "count": "250 г",
-    "image": "img/korean-salad.jpg"
+    "image": "img/korean-salad.jpg",
+    "id": 13
   },
   {
     "keyword": "caesar",
@@ -123,7 +136,8 @@
     "category": "salad",
     "kind": "meat",
     "count": "220 г",
-    "image": "img/caesar.jpg"
+    "image": "img/caesar.jpg",
+    "id": 14
   },
   {
     "keyword": "caprese",
@@ -132,7 +146,8 @@
     "category": "salad",
     "kind": "veg",
     "count": "235 г",
-    "image": "img/caprese.jpg"
+    "image": "img/caprese.jpg",
+    "id": 15
   },
   {
     "keyword": "tuna_salad",
@@ -141,7 +156,8 @@
     "category": "salad",
     "kind": "fish",
     "count": "250 г",
-    "image": "img/tuna-salad.jpg"
+    "image": "img/tuna-salad.jpg",
+    "id": 16
   },
   {
     "keyword": "fries_caesar",
@@ -150,7 +166,8 @@
     "category": "salad",
     "kind": "veg",
     "count": "235 г",
-    "image": "img/fries-sauce.jpg"
+    "image": "img/fries-sauce.jpg",
+    "id": 17
   },
   {
     "keyword": "fries_ketchup",
@@ -159,7 +176,8 @@
     "category": "salad",
     "kind": "veg",
     "count": "235 г",
-    "image": "img/fries-ketchup.jpg"
+    "image": "img/fries-ketchup.jpg",
+    "id": 18
   },
   {
     "keyword": "orange_juice",
@@ -168,7 +186,8 @@
     "category": "beverage",
     "kind": "cold",
     "count": "300 мл",
-    "image": "img/orange.jpg"
+    "image": "img/orange.jpg",
+    "id": 19
   },
   {
     "keyword": "apple_juice",
@@ -177,7 +196,8 @@
     "category": "beverage",
     "kind": "cold",
     "count": "300 мл",
-    "image": "img/apple.jpg"
+    "image": "img/apple.jpg",
+    "id": 20
   },
   {
     "keyword": "carrot_juice",
@@ -186,7 +206,8 @@
     "category": "beverage",
     "kind": "cold",
     "count": "300 мл",
-    "image": "img/carrot.jpg"
+    "image": "img/carrot.jpg",
+    "id": 21
   },
   {
     "keyword": "cappuccino",
@@ -195,7 +216,8 @@
     "category": "beverage",
     "kind": "hot",
     "count": "300 мл",
-    "image": "img/cappuccino.jpg"
+    "image": "img/cappuccino.jpg",
+    "id": 22
   },
   {
     "keyword": "green_tea",
@@ -204,7 +226,8 @@
     "category": "beverage",
     "kind": "hot",
     "count": "300 мл",
-    "image": "img/green-tea.jpg"
+    "image": "img/green-tea.jpg",
+    "id": 23
   },
   {
     "keyword": "black_tea",
@@ -213,7 +236,8 @@
     "category": "beverage",
     "kind": "hot",
     "count": "300 мл",
-    "image": "img/black-tea.jpg"
+    "image": "img/black-tea.jpg",
+    "id": 24
   },
   {
     "keyword": "baklava",
@@ -222,7 +246,8 @@
     "category": "dessert",
     "kind": "small",
     "count": "300 г",
-    "image": "img/baklava.jpg"
+    "image": "img/baklava.jpg",
+    "id": 25
   },
   {
     "keyword": "cheesecake",
@@ -231,7 +256,8 @@
     "category": "dessert",
     "kind": "medium",
     "count": "125 г",
-    "image": "img/cheesecake.jpg"
+    "image": "img/cheesecake.jpg",
+    "id": 26
   },
   {
     "keyword": "chocolate_cheesecake",
@@ -240,7 +266,8 @@
     "category": "dessert",
     "kind": "medium",
     "count": "125 г",
-    "image": "img/chocolate-cheesecake.jpg"
+    "image": "img/chocolate-cheesecake.jpg",
+    "id": 27
   },
   {
     "keyword": "chocolate_cake",
@@ -249,7 +276,8 @@
     "category": "dessert",
     "kind": "small",
     "count": "140 г",
-    "image": "img/chocolate-cake.jpg"
+    "image": "img/chocolate-cake.jpg",
+    "id": 28
   },
   {
     "keyword": "donuts_three",
@@ -258,7 +286,8 @@
     "category": "dessert",
     "kind": "small",
     "count": "350 г",
-    "image": "img/donuts3.jpg"
+    "image": "img/donuts3.jpg",
+    "id": 29
   },
   {
     "keyword": "donuts_six",
@@ -267,6 +296,7 @@
     "category": "dessert",
     "kind": "large",
     "count": "700 г",
-    "image": "img/donuts6.jpg"
+    "image": "img/donuts6.jpg",
+    "id": 30
   }
 ]

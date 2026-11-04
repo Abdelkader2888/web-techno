@@ -113,10 +113,10 @@ function renderCheckout() {
   document.querySelector("#checkout-total").textContent = selectedForCheckout.length ? `Стоимость заказа: ${total}₽` : "Стоимость заказа: 0₽";
 }
 
-function getApiKey() {
+async function getApiKey() {
   let key = sessionStorage.getItem("foodConstructApiKey");
   if (!key) {
-    key = window.prompt("Введите персональный API Key из СДО Московского Политеха:");
+    key = await window.requestFoodConstructApiKey();
     if (!key) return "";
     key = key.trim();
     if (key) sessionStorage.setItem("foodConstructApiKey", key);
@@ -145,7 +145,7 @@ async function sendOrder(event) {
     return;
   }
 
-  const apiKey = getApiKey();
+  const apiKey = await getApiKey();
   if (!apiKey) return;
 
   const formData = new FormData(form);

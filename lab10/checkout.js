@@ -113,10 +113,10 @@ function renderCheckout() {
   document.querySelector("#checkout-total").textContent = selectedForCheckout.length ? `Стоимость заказа: ${total}₽` : "Стоимость заказа: 0₽";
 }
 
-function getApiKey() {
+async function getApiKey() {
   let key = sessionStorage.getItem("foodConstructApiKey");
   if (!key) {
-    key = window.prompt("Введите персональный API Key из СДО Московского Политеха:");
+    key = await window.requestFoodConstructApiKey();
     if (!key) return "";
     key = key.trim();
     if (key) sessionStorage.setItem("foodConstructApiKey", key);
@@ -135,6 +135,9 @@ async function sendOrder(event) {
   const form = event.currentTarget;
   const deliveryTime = document.querySelector("#delivery-time");
   deliveryTime.required = document.querySelector("#delivery-later").checked;
+  deliveryTime.setCustomValidity("");
+  if (deliveryTime.required) setMinimumDeliveryTime(deliveryTime);
+  else deliveryTime.min = "07:00";
   if (!form.checkValidity()) {
     form.reportValidity();
     return;
@@ -145,7 +148,7 @@ async function sendOrder(event) {
     return;
   }
 
-  const apiKey = getApiKey();
+  const apiKey = await getApiKey();
   if (!apiKey) return;
 
   const formData = new FormData(form);
@@ -178,6 +181,20 @@ async function sendOrder(event) {
   }
 }
 
+function setMinimumDeliveryTime(input) {
+  const now = new Date();
+  const currentMinutes = now.getHours() * 60 + now.getMinutes() + now.getSeconds() / 60;
+  const minimum = Math.max(7 * 60, Math.ceil(currentMinutes / 5) * 5);
+  if (minimum > 23 * 60) {
+    input.setCustomValidity("Сегодня уже нет доступного времени доставки к указанному времени.");
+    return;
+  }
+  const hours = String(Math.floor(minimum / 60)).padStart(2, "0");
+  const minutes = String(minimum % 60).padStart(2, "0");
+  input.min = hours + ":" + minutes;
+  input.setCustomValidity("");
+}
+
 loadDishes()
   .then((loadedDishes) => {
     const savedIds = readStoredIds();
@@ -195,3 +212,13 @@ loadDishes()
   });
 
 document.querySelector("#checkout-form").addEventListener("submit", sendOrder);
+
+document.querySelectorAll('input[name="delivery_type"]').forEach((radio) => {
+  radio.addEventListener("change", () => {
+    const deliveryTime = document.querySelector("#delivery-time");
+    deliveryTime.required = document.querySelector("#delivery-later").checked;
+    deliveryTime.setCustomValidity("");
+    if (deliveryTime.required) setMinimumDeliveryTime(deliveryTime);
+    else deliveryTime.min = "07:00";
+  });
+});

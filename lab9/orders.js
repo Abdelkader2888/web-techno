@@ -17,9 +17,9 @@ function showStatus(message, isError = false) {
   status.classList.toggle("error", isError);
 }
 
-function getKey() {
+async function getKey() {
   if (apiKey) return apiKey;
-  const enteredKey = window.prompt("Введите персональный API Key из СДО Московского Политеха:");
+  const enteredKey = await window.requestFoodConstructApiKey();
   if (!enteredKey) return "";
   apiKey = enteredKey.trim();
   if (apiKey) sessionStorage.setItem("foodConstructApiKey", apiKey);
@@ -27,7 +27,7 @@ function getKey() {
 }
 
 async function apiRequest(path, options = {}) {
-  const key = getKey();
+  const key = await getKey();
   if (!key) throw new Error("Для просмотра заказов нужен персональный API Key.");
   const response = await fetch(`${ordersApiRoot}${path}?api_key=${encodeURIComponent(key)}`, options);
   const text = await response.text();
@@ -140,6 +140,11 @@ function showEdit(order) {
   form.elements.delivery_address.value = order.delivery_address || "";
   form.elements.delivery_type.value = order.delivery_type || "now";
   form.elements.delivery_time.value = order.delivery_time || "";
+  const deliveryTime = document.querySelector("#edit-delivery-time");
+  deliveryTime.required = form.elements.delivery_type.value === "by_time";
+  deliveryTime.setCustomValidity("");
+  if (deliveryTime.required) setMinimumDeliveryTime(deliveryTime);
+  else deliveryTime.min = "07:00";
   form.elements.comment.value = order.comment || "";
   document.querySelector("#edit-dialog").showModal();
 }
@@ -175,6 +180,9 @@ document.querySelector("#edit-form").addEventListener("submit", async (event) =>
   const form = event.currentTarget;
   const timeInput = form.elements.delivery_time;
   timeInput.required = form.elements.delivery_type.value === "by_time";
+  timeInput.setCustomValidity("");
+  if (timeInput.required) setMinimumDeliveryTime(timeInput);
+  else timeInput.min = "07:00";
   if (!form.checkValidity()) {
     form.reportValidity();
     return;
@@ -195,6 +203,20 @@ document.querySelector("#edit-form").addEventListener("submit", async (event) =>
   }
 });
 
+function setMinimumDeliveryTime(input) {
+  const now = new Date();
+  const currentMinutes = now.getHours() * 60 + now.getMinutes() + now.getSeconds() / 60;
+  const minimum = Math.max(7 * 60, Math.ceil(currentMinutes / 5) * 5);
+  if (minimum > 23 * 60) {
+    input.setCustomValidity("Сегодня уже нет доступного времени доставки к указанному времени.");
+    return;
+  }
+  const hours = String(Math.floor(minimum / 60)).padStart(2, "0");
+  const minutes = String(minimum % 60).padStart(2, "0");
+  input.min = hours + ":" + minutes;
+  input.setCustomValidity("");
+}
+
 document.querySelector("#confirm-delete").addEventListener("click", async () => {
   if (!currentOrder) return;
   try {
@@ -211,7 +233,11 @@ document.querySelector("#confirm-delete").addEventListener("click", async () => 
 });
 
 document.querySelector("#edit-delivery-type").addEventListener("change", (event) => {
-  document.querySelector("#edit-delivery-time").required = event.target.value === "by_time";
+  const deliveryTime = document.querySelector("#edit-delivery-time");
+  deliveryTime.required = event.target.value === "by_time";
+  deliveryTime.setCustomValidity("");
+  if (deliveryTime.required) setMinimumDeliveryTime(deliveryTime);
+  else deliveryTime.min = "07:00";
 });
 
 Promise.all([loadDishes(), refreshOrders()])
